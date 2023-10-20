@@ -1,0 +1,11 @@
+.main {
+    background: var(--main);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    :global(.small) {
+        font-size: 2dvhrem;
+        bottom: -.25rem;
+    }
+}
