@@ -54,7 +54,7 @@ function LocationSuggestions({suggestions=[], setter}: LocationSuggestionsProps)
     </div>
 }
 
-function LocationInput({ text, id, ...props }: JSX.IntrinsicElements["input"] & { text: string, id: string }): JSX.Element {
+function LocationInput({ text, id, setter, ...props }: JSX.IntrinsicElements["input"] & { text: string, id: string, setter: (value: Place) => void }): JSX.Element {
 
     const [suggestions, setSuggestions] = useState<Place[]>([]);
     const ref = useRef<HTMLInputElement>(null);
@@ -84,24 +84,23 @@ function LocationInput({ text, id, ...props }: JSX.IntrinsicElements["input"] & 
         <LocationSuggestions setter={(place: Place)=>{
             const input = document.getElementById(id) as HTMLInputElement;
             input.value = place.name;
-            input.setAttribute("place_id", place.id);
+            setter(place);
             setSuggestions([]);
 
         }} suggestions={suggestions} />
     </div>
 }
 
-function TravelSelector({originSetter, destinationSetter}: {originSetter: (value: Location) => void, destinationSetter: (value: Location) => void}): JSX.Element {
+function TravelSelector({originSetter, destinationSetter}: {originSetter: (value: Place) => void, destinationSetter: (value: Place) => void}): JSX.Element {
     return <div className={`flex v gap-05 ${selectorStyles.travel}`}>
-        <LocationInput text="Where did you travel from?" id="origin" />
-        <LocationInput text="Where did you travel to?" id="destination" />
+        <LocationInput text="Where did you travel from?" id="origin" setter={originSetter} />
+        <LocationInput text="Where did you travel to?" id="destination" setter={destinationSetter} />
     </div>
 }
 
 
-function Selector(): JSX.Element {
-    const [origin, setOrigin] = useState<Location>({});
-    const [destination, setDestination] = useState<Location>({});
+function Selector({originSetter, destinationSetter}: {originSetter: (value: Place) => void, destinationSetter: (value: Place) => void}): JSX.Element {
+    
     const [travelType, setTravelType] = useState<"car" | "plane" | "train" | "bus">("car");
 
     
@@ -114,7 +113,7 @@ function Selector(): JSX.Element {
                     })
                 }
             </div>
-            <TravelSelector originSetter={setOrigin} destinationSetter={setDestination} />
+            <TravelSelector originSetter={originSetter} destinationSetter={destinationSetter} />
         </div>
         <button className={`flex center gap05`}>
             <i className='bx bxs-sad' />
@@ -127,7 +126,27 @@ function Selector(): JSX.Element {
 }
 
 
+function Results({place1, place2, visible}: {place1: Place, place2: Place, visible: boolean}): JSX.Element {
+    return <div className={`${styles.results} ${visible ? "" : styles.hidden}`}>
+        <h3>
+            Look what you did to the world!
+        </h3>
+    </div>
+}
+
+
+
 export default function (): JSX.Element {
+    const [resultsVisible, setResultsVisible] = useState<boolean>(false);
+    const [origin, setOrigin] = useState<Place>({
+        name: "E",
+        id: "0",
+    })
+    const [destination, setDestination] = useState<Place>({
+        name: "E",
+        id: "0",
+    })
+
     return <div className="flex v center">
         <div className={`flex v gap2 ${wrapperStyles.main}`} style={{ marginTop: "10rem" }}>
             <h2 className="center">
@@ -136,7 +155,8 @@ export default function (): JSX.Element {
             <p className="center">
                 Depending on how many kilometers you travel by car or by plane, we calculate the amount of CO2 emissions you produced and the consequences for our loved world.
             </p>
-            <Selector />
+            <Selector originSetter={setOrigin} destinationSetter={setDestination} />
+            <Results place1={origin} place2={destination} visible={resultsVisible} />
         </div>
     </div>
 }
