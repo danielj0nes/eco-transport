@@ -1,3 +1,5 @@
+"use server";
+
 import { Place } from "@/var/types";
 import getDirectionLength from "./getDirectionLength";
 import getLocation from "./getLocation";
