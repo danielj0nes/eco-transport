@@ -1,0 +1,87 @@
+.input {
+    :global(input){
+        padding: .5rem 0;
+        width: 20rem;
+        border: none;
+        position: relative;
+
+        &:focus {
+            outline: none;
+
+        }
+    }
+    margin: .25rem;
+
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.inputBar {
+    content: "";
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--main);
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
+}
+
+
+.suggestions {
+    z-index: 5;
+    margin-top: .5rem;
+
+    max-width: 30rem;
+    background: var(--back);
+    box-shadow: 0 0 1rem var(--shadow);
+    border-radius: 2rem;
+    overflow: hidden;
+    position: absolute;
+
+    :global(h3){
+        font-size: 1rem;
+    }
+
+    >:global(div){
+        width: 100%;
+    }
+}
+
+.suggestionsObject {
+    padding: 1rem 1.5rem;
+    overflow: hidden;
+    position: relative;
+
+    cursor: pointer;
+
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--main);
+        opacity: 0;
+        z-index: 2;
+        transition: var(--transition);
+    }
+
+    :global(h3){
+        position: relative;
+        z-index: 3;
+    }
+
+    &:hover {
+        &::before {
+            opacity: 1;
+        }
+        :global(h3){
+            color: white;
+        }
+    }
+
+
+}

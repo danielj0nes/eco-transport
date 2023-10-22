@@ -1,10 +1,13 @@
+@tailwind utilities;
+
 :root {
     --spacing: 5rem;
-    --letter-spacing-multiplier: -0.045;
+    --letter-spacing-multiplier: -0.015;
 
     --transition: .5s cubic-bezier(0.175,0.885,0.32,1.275);
 
     --main: linear-gradient(250.46deg, #E84A4A 72.09%, #EC74E7 352.57%);
+    --main-solid: #E84A4A;
     
 }
 
@@ -17,6 +20,7 @@ button, a {
     overflow-x: hidden;
     z-index: 0;
     padding-top: 1rem;
+    min-height: 100vh;
 
     >* {
         padding-left: var(--spacing);
@@ -27,6 +31,7 @@ button, a {
 body {
     color: var(--primary);
     background: linear-gradient(155.52deg, #D1F8C7 18.54%, #FAF1C1 60.66%, #FEE1B6 64.28%, #FFFCB2 93.17%, #FB6E07 100.39%);
+    
 }
 
 h1, h2, h3, h4, h5, p, span, a {
@@ -49,8 +54,8 @@ h2 {
 }
 
 h3 {
-    font-weight: 700;
-    --font-size: 2rem;
+    font-weight: 600;
+    --font-size: 1.5rem;
 }
 
 h4 {
@@ -81,9 +86,45 @@ a {
 }
 
 button {
+    cursor: pointer;
+
     outline: none;
     border: none;
     font-family: inherit;
+
+    padding: .75rem 1.5rem;
+    border-radius: .9rem;
+    position: relative;
+    background: var(--primary);
+
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--main);
+        opacity: 0;
+        z-index: 2;
+
+        transition: var(--transition);
+    }
+
+    i {
+        font-size: 1.75rem;
+    }
+
+    * {
+        position: relative;
+        z-index: 3;
+        color: white;
+    }
+
+    &:hover {
+        &::before {
+            opacity: 1;
+        }
+    }
 }
 
 input {

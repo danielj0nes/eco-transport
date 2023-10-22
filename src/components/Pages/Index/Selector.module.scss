@@ -22,3 +22,17 @@
 .travel {
     height: 100%;
 }
+
+
+.input_wrapper {
+    position: relative;
+
+    :global(input){
+        position: relative;
+    }
+}
+
+.input {
+    position: absolute;
+    left: 0;
+}
