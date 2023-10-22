@@ -43,13 +43,11 @@ export default function RootLayout({ children }: LayoutType) {
             <head>
                 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
             </head>
-            <BodyThemeProvider className={montserrat.className} themeRetriever={themeRetriever(themeSettings)}>
+            <body className='light'>
                 <main className='_eco'>
-
-                    {children}
-                    
+                    {children} 
                 </main>
-            </BodyThemeProvider>
+            </body>
         </html>
     )
 }
