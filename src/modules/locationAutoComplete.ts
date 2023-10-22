@@ -1,5 +1,3 @@
-"use server";
-
 import { Place } from "@/var/types";
 
 export default async function locationAutoComplete(location: string): Promise<Place[]>{

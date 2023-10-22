@@ -1,5 +1,3 @@
-"use server";
-
 import { Location } from "@/var/types";
 
 export default async function getLocation(place_id: string): Promise<Location> {
