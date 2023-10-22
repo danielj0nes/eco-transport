@@ -5,10 +5,12 @@
     --letter-spacing-multiplier: -0.015;
 
     --transition: .5s cubic-bezier(0.175,0.885,0.32,1.275);
+    --transition-normal: .5s ease;
 
     --main: linear-gradient(250.46deg, #E84A4A 72.09%, #EC74E7 352.57%);
     --main-solid: #E84A4A;
     
+    --gradient-background: linear-gradient(155.52deg, #ffffff 18.54%, #f5f0cf 30.66%, #fed3cb 64.28%, #fbfae9 93.17%, #f3c9ab 100.39%);
 }
 
 button, a {
@@ -30,7 +32,7 @@ button, a {
 
 body {
     color: var(--primary);
-    background: linear-gradient(155.52deg, #D1F8C7 18.54%, #FAF1C1 60.66%, #FEE1B6 64.28%, #FFFCB2 93.17%, #FB6E07 100.39%);
+    background: var(--gradient-background);
     
 }
 

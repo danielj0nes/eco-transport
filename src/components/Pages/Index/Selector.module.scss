@@ -6,11 +6,14 @@
 }
 
 .icon {
-    background: var(--main);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    color: var(--tertiary);
     font-size: 3rem;
+}
+
+.iconSelected {
+    color: var(--main-solid);
 }
 
 .selector {
