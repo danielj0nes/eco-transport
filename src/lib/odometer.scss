@@ -5,6 +5,7 @@
     *zoom: 1;
     *display: inline;
     position: relative;
+    height: 2.3rem;
   }
   .odometer.odometer-auto-theme .odometer-digit, .odometer.odometer-theme-default .odometer-digit {
     display: inline-block;
@@ -14,6 +15,13 @@
     *display: inline;
     position: relative;
   }
+
+  //custom added
+  .odometer-digit {
+    transform: translateY(-.16rem);
+    margin-left: -.1rem;
+  }
+
   .odometer.odometer-auto-theme .odometer-digit .odometer-digit-spacer, .odometer.odometer-theme-default .odometer-digit .odometer-digit-spacer {
     display: inline-block;
     vertical-align: middle;
