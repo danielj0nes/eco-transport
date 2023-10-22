@@ -176,7 +176,7 @@ function Results(
             <div className={styles.resultsObject}>
                 <img src="https://www.lse.ac.uk/granthaminstitute/wp-content/uploads/2018/01/CongoBrazza-credit-Bobulix-Flickr-e1676028067118.jpg" />
                 <h3 style={{display: "inline"}}>
-                    Over <span className="highlight"><ReactOdometer value={parseInt((footprint*2.18/365).toFixed(0))} duration={1000} /> trees</span> would be needed to offset your carbon footprint.
+                    Over <span className="highlight"><ReactOdometer value={parseInt((footprint/0.068).toFixed(0))} duration={1000} /> trees</span> would be needed to offset your carbon footprint.
                 </h3>
             </div>
         </div>
