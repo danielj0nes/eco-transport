@@ -17,9 +17,12 @@
   }
 
   //custom added
-  .odometer-digit {
-    transform: translateY(-.16rem);
+  .odometer-digit, .odometer-formatting-mark {
     margin-left: -.1rem;
+  }
+
+  .odometer-inside {
+    transform: translateY(-.56rem);
   }
 
   .odometer.odometer-auto-theme .odometer-digit .odometer-digit-spacer, .odometer.odometer-theme-default .odometer-digit .odometer-digit-spacer {
