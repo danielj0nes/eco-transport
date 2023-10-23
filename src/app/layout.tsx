@@ -28,6 +28,7 @@ import { themeRetriever } from 'nitlix-themes'
 import BodyThemeProvider from '@/themes/BodyThemeProvider'
 import themeSettings from "@/themes/settings"
 import Logo from '@/components/Logo/Logo'
+import Aos from '@/lib/aos'
 
 
 // =====================
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: LayoutType) {
                 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
             </head>
             <BodyThemeProvider className={montserrat.className} themeRetriever={themeRetriever(themeSettings)}>
+                <Aos />
                 <main className='_eco'>
                     {children}
                 </main>

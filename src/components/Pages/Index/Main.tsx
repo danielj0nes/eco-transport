@@ -9,9 +9,15 @@ import { useRef, useState } from "react";
 import { Location, Place, TravelType } from "@/var/types";
 import locationAutoComplete from "@/modules/locationAutoComplete";
 import calculateDistance from "@/modules/calculateDistance";
-import ReactOdometer from "react-odometerjs";
-import '../../../lib/odometer.scss'
 
+import dynamic from "next/dynamic";
+
+const ReactOdometer = dynamic(
+    () => import('react-odometerjs'),
+    { ssr: false }
+)
+
+import "../../../lib/odometer.scss"
 
 const selectors: { icon: string, name: TravelType, action: () => void }[] = [
     {
@@ -110,9 +116,10 @@ function Selector(
         destinationSetter, 
         travelTypeSetter, 
         travelType,
-        checkFunction
+        checkFunction,
+        ...props
     }: 
-    {
+    JSX.IntrinsicElements["div"] & {
         originSetter: (value: Place) => void, 
         destinationSetter: (value: Place) => void, 
         travelTypeSetter: (value: TravelType) => void, 
@@ -122,7 +129,7 @@ function Selector(
 {
 
     
-    return <div className={`flex gap2 items-center justify-between ${selectorStyles.main}`}>
+    return <div className={`flex gap2 items-center justify-between ${selectorStyles.main}`} {...props}>
         <div className="flex gap1 center">
             <div className={`flex center gap1 ${selectorStyles.selector}`}>
                 {
@@ -218,13 +225,13 @@ export default function (): JSX.Element {
 
     return <div className="flex v center">
         <div className={`flex v gap2 ${wrapperStyles.main}`} style={{ marginTop: "10rem" }}>
-            <h2 className="center">
+            <h2 className="center" data-aos="fade-up">
                 Check out your <HighlightText>CO2</HighlightText> foot print
             </h2>
-            <p className="center">
+            <p className="center" data-aos="fade-up" data-aos-delay="100">
                 Depending on how many kilometers you travel by car or by plane, we calculate the amount of CO2 emissions you produced and the consequences for our loved world.
             </p>
-            <Selector originSetter={setOrigin} destinationSetter={setDestination} travelTypeSetter={setTravelType} travelType={travelType} checkFunction={check} />
+            <Selector originSetter={setOrigin} destinationSetter={setDestination} travelTypeSetter={setTravelType} travelType={travelType} checkFunction={check} data-aos="fade-up" data-aos-delay="200" />
             <Results distance={distance} footprint={footprint} visible={resultsVisible} />
         </div>
     </div>
