@@ -93,6 +93,10 @@
     background: var(--gradient-background);
 
     padding: 4rem;
+    //transition opacity with .1s delay
+    transition: var(--transition);
+    display: none;
+    opacity: 0;
 }
 
 
@@ -113,19 +117,43 @@
     height: 100%;
 
     overflow: hidden;
-    border-radius: 3rem;
-    box-shadow: 0 0 2rem var(--shadow);
+    border-radius: 2rem;
+    box-shadow: 0 0 3rem var(--back);
     position: relative;
 
     padding: 2rem;
     display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
 
+
+
+
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex-direction: column;
+    gap: 1rem;
+
+
+
+
+
+    // Inner
     :global(img){
         position: absolute;
         inset: 0;
         z-index: -1;
+    }
+
+    :global(button){
+        :global(h3){
+            font-size: 1.25rem
+        }
+        :global(i){
+            font-size: 1.3rem;
+        }
+    }
+
+    :global(canvas){
+        position: absolute;
     }
 
     :global(h3){
@@ -137,7 +165,7 @@
     }
 
     :global(.highlight){
-        --gradient: linear-gradient(180deg, rgb(255, 231, 231) 0%, rgb(255, 55, 0) 100%);
+        --gradient: linear-gradient(180deg, rgb(255, 231, 231) 0%, rgb(241, 17, 36) 100%);
         background: var(--gradient);
         -webkit-background-clip: text;
         background-clip: text;
@@ -161,4 +189,19 @@
         z-index: 1;
         background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.75) 100%);
     }
+}
+
+.resultsVisible {
+    opacity: 1;
+}
+
+.resultsShow {
+    display: flex;
+}
+
+.resultsObjectChart {
+    :global(h3){
+        font-size: 1.5rem;
+    }
+    
 }
