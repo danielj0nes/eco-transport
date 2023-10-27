@@ -3,6 +3,17 @@
     padding: 1.5rem;
     border-radius: 2rem;
     box-shadow: 0 0 1rem var(--shadow2);
+
+    @media (width < 1000px){
+        flex-direction: column;
+        
+        @media (width < 800px){
+            :global(.inner){
+                flex-direction: column;
+            }
+            
+        }
+    }
 }
 
 .icon {

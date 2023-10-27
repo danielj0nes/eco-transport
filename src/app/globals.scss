@@ -13,6 +13,25 @@
     --gradient-background: linear-gradient(155.52deg, #ffffff 18.54%, #f5f0cf 30.66%, #fed3cb 64.28%, #fbfae9 93.17%, #f3c9ab 100.39%);
 }
 
+
+@media (width < 1050px) {
+    :root {
+        --spacing: 2rem;
+    }
+
+    @media (width < 800px){
+        html {
+            font-size: 80%;
+        }
+
+        ._eco {
+            h2 {
+                @apply text-center;
+            }
+        }
+    }
+}
+
 button, a {
     transition: var(--transition);
 }
@@ -88,6 +107,7 @@ a {
 }
 
 button {
+    width: max-content;
     cursor: pointer;
 
     outline: none;

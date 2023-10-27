@@ -152,7 +152,7 @@ function Selector(
 
     
     return <div className={`flex gap2 items-center justify-between ${selectorStyles.main}`} {...props}>
-        <div className="flex gap1 center">
+        <div className="flex gap1 center inner">
             <div className={`flex center gap1 ${selectorStyles.selector}`}>
                 {
                     selectors.map((item, key) => {
@@ -175,6 +175,7 @@ function Selector(
 
 
 export const options: ChartOptions<"bar"> = {
+    color: "#000",
     indexAxis: 'y' as const,
     maintainAspectRatio: false,
     elements: {
@@ -314,7 +315,9 @@ function Results(
     }
 
 
-
+    const trees = parseInt((footprint/21.77).toFixed(0));
+    const footprintDisplay = parseFloat(footprint.toFixed(0));
+    const distanceDisplay = parseFloat(distance.toFixed(0));
     
 
     return <div className={`flex v ${styles.results}`} ref={resultsRef}>
@@ -325,35 +328,43 @@ function Results(
             <div className={styles.resultsObject} ref={refs[1]} data-aos="fade-up" data-aos-delay="100">
                 <img src="https://images.immediate.co.uk/production/volatile/sites/7/2018/02/Earth-from-space-1-64e9a7c.jpg?resize=768,574" />
                 <h3>
-                    You've travelled <span className="highlight"><ReactOdometer value={parseInt((distance).toFixed(0))} duration={1000} />km.</span>
+                    You've travelled <span className="highlight"><ReactOdometer value={distanceDisplay} duration={1000} />km </span> in total.
                 </h3>
             </div>
             <div className={styles.resultsObject} ref={refs[2]} data-aos="fade-up" data-aos-delay="200">
                 <img src="https://scx2.b-cdn.net/gfx/news/2023/carbon-emissions-cost.jpg" />
                 <h3>
-                    Your travels contributed to the release of <span className="highlight"><ReactOdometer value={parseFloat(footprint.toFixed(0))} duration={1000} />kg</span> of CO2 into the atmosphere
+                    Your travels contributed to the release of <span className="highlight"><ReactOdometer value={footprintDisplay} duration={1000} />kg</span> of CO2 into the atmosphere
                 </h3>
             </div>
             <div className={styles.resultsObject} ref={refs[3]} data-aos="fade-up" data-aos-delay="300">
                 <img src="https://www.lse.ac.uk/granthaminstitute/wp-content/uploads/2018/01/CongoBrazza-credit-Bobulix-Flickr-e1676028067118.jpg" />
                 <h3 style={{display: "inline"}}>
-                    Over <span className="highlight"><ReactOdometer value={parseInt((footprint/0.068).toFixed(0))} duration={1000} /> trees</span> would be needed to offset your carbon footprint.
+                    Over <span className="highlight"><ReactOdometer value={trees} duration={1000} /> {((trees == 1) ? "tree" : "trees")}</span> would be needed to offset your carbon footprint.
                 </h3>
             </div>
             <div className={`${styles.resultsObject} ${styles.resultsObjectChart}`} ref={refs[4]} data-aos="fade-up" data-aos-delay="400">
-                <Bar data={data} options={options} style={{width: "100%", height: "100%"}} />
-                <h3>
-                    {
-                        (index == 0) ? "You used the best travel method in terms of CO₂ emissions." :
-                        "You could've used a better travel method in terms of CO₂ emissions."
-                    }
-                </h3>
-                <button className={`flex center gap05`} onClick={closeFunction}>
-                    <i className='bx bxs-chevrons-right' />
-                    <h3>
-                        Try another trip?
-                    </h3>
-                </button>
+                <div className="flex v gap1">
+                    <div className="flex gap05 inner">
+                        <h3>
+                            {
+                                (index == 0) ? "You used the best travel method in terms of CO2 emissions." :
+                                "You could've used a better travel method in terms of CO2 emissions."
+                            }
+                        </h3>
+                        <button className={`flex center gap05`} onClick={closeFunction}>
+                            <i className='bx bxs-chevrons-right' />
+                            <h3>
+                                Try another trip?
+                            </h3>
+                        </button>
+                    </div>
+                    
+                    <div className="chart">
+                        <Bar data={data} options={options}/>
+                    </div>
+                </div>
+                
             </div>
            
         </div>

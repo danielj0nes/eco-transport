@@ -86,6 +86,9 @@
 
 }
 
+
+$resultsBreakpoint: 1100px;
+
 .results {
     position: fixed;
     z-index: 999;
@@ -93,10 +96,18 @@
     background: var(--gradient-background);
 
     padding: 4rem;
-    //transition opacity with .1s delay
     transition: var(--transition);
     display: none;
     opacity: 0;
+    
+    @media (width < $resultsBreakpoint){
+        overflow-y: auto;
+        padding: 1rem;
+
+        :global(h2){
+            font-size: 2rem;
+        }
+    }
 }
 
 
@@ -107,6 +118,12 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
+
+    @media (width < 1100px){
+        grid-template-columns: 100%;
+        grid-template-rows: repeat(4, 1fr);
+        max-height: 200vh;
+    }
 
     gap: 2rem;
     flex: 1;
@@ -140,6 +157,7 @@
     :global(img){
         position: absolute;
         inset: 0;
+        width: 100%; height: 100%;
         z-index: -1;
     }
 
@@ -152,9 +170,7 @@
         }
     }
 
-    :global(canvas){
-        position: absolute;
-    }
+
 
     :global(h3){
         color: white;
@@ -200,8 +216,34 @@
 }
 
 .resultsObjectChart {
+
+    >:global(.flex){
+        flex-direction: column-reverse;
+        height: 100%;
+        width: 100%;
+    }
+
     :global(h3){
         font-size: 1.5rem;
+    }
+
+
+
+    @media (width < 1500px){
+        :global(.inner){
+            flex-direction: column;
+        }
+    }
+
+    :global(.chart){
+        flex-grow: 1;
+        width: 100%;
+        position: relative;
+
+        :global(canvas){
+            width: 100%;
+            height: 100%;
+        }
     }
     
 }

@@ -18,8 +18,12 @@ const montserrat = Montserrat({ subsets: ['latin'] })
 // =====================
 // Metadata Export
 // =====================
-import { metaGen } from 'nitlix-metagen'
-export const metadata = metaGen()
+import { metaGen, setDefaults } from 'nitlix-metagen'
+setDefaults({
+    title: "CO2Checkyou!",
+    description: "CO2Checkyou! is a web app that helps you to calculate your carbon footprint based on where and how you travelled! Visit us today, and find out what is stopping us from saving this planet!",
+})
+export const metadata = metaGen();
 
 // =====================
 // Theme Provider
