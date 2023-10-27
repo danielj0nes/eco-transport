@@ -38,7 +38,7 @@ function Fact({
 export default function(){
     return <div className={`${styles.main} flex gap2`}>
         {
-            facts.map((fact, index) => <Fact key={index} {...fact} />)
+            facts.map((fact, index) => <Fact key={index} {...fact} data-aos="fade-up" data-aos-delay={index * 100 + 300} />)
         }
     </div>
 }
