@@ -1,0 +1,25 @@
+.main {
+    @apply mt-40 mb-40 grid grid-cols-2 gap-4;
+
+    @media (width < 800px){
+        @apply grid-cols-1 grid-rows-2;
+    }
+}
+
+
+.fact {   
+    @apply p-8 relative rounded-2xl overflow-hidden flex items-end;
+
+    :global(h3) {
+        @apply text-white mt-16 ;
+    }
+
+    :global(a){
+        @apply text-orange-400;
+    }
+
+
+    :global(img){
+        @apply absolute inset-0 w-full h-full object-cover z-[-1];
+    }
+}
