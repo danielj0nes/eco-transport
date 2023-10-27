@@ -20,7 +20,7 @@ const montserrat = Montserrat({ subsets: ['latin'] })
 // =====================
 import { metaGen, setDefaults } from 'nitlix-metagen'
 setDefaults({
-    title: "CO2Checkyou!",
+    title: "EcoTransport - Your commute in carbon' from",
     description: "CO2Checkyou! is a web app that helps you to calculate your carbon footprint based on where and how you travelled! Visit us today, and find out what is stopping us from saving this planet!",
 })
 export const metadata = metaGen();
